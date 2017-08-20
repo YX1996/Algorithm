@@ -1,0 +1,18 @@
+function rot13(str) { // LBH QVQ VG!
+  
+  var myArr = [];
+  var arr = str.toUpperCase().split(" "); //[SERR,PBQR,PNZC]
+  for(let i=0; i<arr.length; i++) {
+    var newArr = arr[i].split("");         //[S,E,R,R]  [P,B,Q,R] ...
+    for(let j=0; j<arr[i].length; j++){
+      var num = newArr[j].charCodeAt();    //得到每个字母对应的Unicode值 范围在65~90间
+      if(num>=65&&num<=90){
+        newArr[j] = num+13>90? String.fromCharCode(64+num+13-90) : String.fromCharCode(num+13);
+      }                            // 65～90号为26个大写英文字母
+    }
+    myArr.push(newArr.join(""));
+  }
+  return myArr.join(" ");
+}
+
+rot13("SERR PBQR PNZC");  // 你可以修改这一行来测试你的代码
