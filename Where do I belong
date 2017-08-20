@@ -1,0 +1,11 @@
+function where(arr, num) {
+ 
+  var newArr = arr.concat(num);
+  newArr.sort(function(a,b){
+   return a-b;
+  });
+  num = newArr.indexOf(num);
+  return num;
+}
+
+where([40, 60], 50);
