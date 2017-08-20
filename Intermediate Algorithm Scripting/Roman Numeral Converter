@@ -1,0 +1,89 @@
+function convert(num) {
+  var x;
+  var romanNum = [];
+  //千位
+  if(num>=1000){
+    x = Math.floor(num/1000);
+    for(let i=0; i<x; i++) {
+      romanNum.push("M");
+    }
+    num = num%1000;
+  }
+  //百位
+  if(num>=100){
+    x = Math.floor(num/100);
+    if(x>=5){
+        if(x==9){
+        romanNum.push("CM");
+      }else{
+        romanNum.push("D");
+        for(let i=0; i<x-5; i++){
+          console.log(132);
+          romanNum.push("C");
+        }
+      }
+    }
+    if(x<4){
+      if(x==4){
+        romanNum.push("CD");
+      }else{
+        for(let i=0; i<x; i++){
+          romanNum.push("C");
+        }
+      }
+    }
+    num = num%100;
+  }
+  
+  //十位
+  if(num>=10){
+    x = Math.floor(num/10);
+    if(x>=5){
+      if(x==9){
+        romanNum.push("XC");
+      }else{
+        romanNum.push("L");
+        for(let i=0; i<x-5; i++){
+          romanNum.push("X");
+        }
+      }
+    }
+    if(x<5){
+      if(x==4){
+        romanNum.push("XL");
+      }else{
+        for(let i=0; i<x; i++){
+          romanNum.push("X");
+        }
+      }
+    }
+    num = num%10;
+  }
+  
+  //个位
+  if(num>=1){
+    x=num;
+    if(x>=5){
+      if(x==9){
+        romanNum.push("IX");
+      }else{
+        romanNum.push("V");
+        for(let i=0; i<x-5; i++){
+          romanNum.push("I");
+        }
+      }
+    }
+    if(x<5){
+      if(x==4){
+        romanNum.push("IV");
+      }else{
+        for(let i=0; i<x; i++){
+          romanNum.push("I");
+        }
+      }
+    }
+  }
+  return romanNum.join("");
+}
+
+convert(36);
