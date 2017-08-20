@@ -1,0 +1,13 @@
+function destroyer(arr) {
+ 
+  var temp = arguments;
+  return  arr.filter(function(item){
+    for(let i=0; i<temp.length; i++){
+       if(item == temp[i]) return false;
+    }
+    return true;
+  });
+  
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
