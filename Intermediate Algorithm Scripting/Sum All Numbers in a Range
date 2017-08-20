@@ -1,0 +1,13 @@
+function sumAll(arr) {
+  var newArr = [];
+  var num = Math.max.apply(null,arr) - Math.min.apply(null,arr);
+  for(let i=0; i<num+1; i++){
+    newArr.push(Math.min.apply(null,arr)+i);
+  }
+  return newArr.reduce(function(pre,cur){
+    return pre+cur;
+  });
+ 
+}
+
+sumAll([1, 4]);
