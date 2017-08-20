@@ -1,0 +1,22 @@
+function where(collection, source) {
+  var arr = [];
+  // What's in a name?
+  collection.forEach(function(item,index){
+          
+    var skey = Object.keys(source);
+    var sVal = [];
+    var newarr=[];
+    
+    for(let i=0; i<skey.length; i++) {
+      newarr.push(item[skey[i]]);
+      sVal.push(source[skey[i]]);
+    }
+     if (newarr.join("") == sVal.join("")) {
+       arr.push(item);
+     }
+  });
+  
+  return arr;
+  
+}
+where([{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }], { "a": 1, "b": 2 }) ;
