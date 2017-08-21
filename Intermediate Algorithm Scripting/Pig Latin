@@ -1,0 +1,20 @@
+function translate(str) {
+  var arr = ["a","e","i","o","u"];
+  if(arr.indexOf(str.charAt(0)) >= 0) {
+    var nArr = str.split("");
+    nArr.push("way");
+    str = nArr.join("");
+  }else{
+    for(var i=0;i<arr.length;i++) {
+      if(arr.indexOf(str.charAt(i)>=0)) break;
+    }
+   
+    
+    var cArr = str.substr(i).split();
+    cArr.push(str.substr(0,i)+"ay");
+    str = cArr.join("");    
+  }
+  return str;
+}
+
+translate("consonant");
