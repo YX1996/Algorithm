@@ -1,0 +1,14 @@
+function myReplace(str, before, after) {
+  var unicode = before.charCodeAt(0);
+  if(unicode>=65 && unicode<=90){
+    var first = after.charAt(0).toUpperCase();// L
+    var arr = after.split("");        // [l,e,a,p,e,d]
+    arr.splice(0,1,first);    //[L,e,a,p,e,d]
+    return str.replace(before,arr.join(""));
+  }else{
+   return str.replace(before,after);
+  }
+  
+}
+
+myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
