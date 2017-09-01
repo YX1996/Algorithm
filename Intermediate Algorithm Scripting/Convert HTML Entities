@@ -1,0 +1,7 @@
+function convert(str) {
+  // &colon;&rpar;
+  var newstr = str.replace(/\&/gi,"&amp;").replace(/\</gi,"&lt;").replace(/\>/gi,"&gt;").replace(/\'/gi,"&apos;").replace(/\"/gi,"&quot;");
+  return newstr;
+}
+
+convert("Dolce & Gabbana");
