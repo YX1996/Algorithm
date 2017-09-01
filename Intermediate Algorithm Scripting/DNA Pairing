@@ -1,0 +1,16 @@
+function pair(str) {
+  var newArr = [];
+  var arr = str.split("");
+  var base = {
+    "A" : ["A", "T"],
+    "T" : ["T", "A"],
+    "G" : ["G", "C"],
+    "C" : ["C", "G"]
+  };
+  for(let i=0; i<arr.length; i++) {
+    newArr.push(base[arr[i]]);
+  }
+  return newArr;
+}
+
+pair("GCG");
