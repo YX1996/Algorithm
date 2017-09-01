@@ -1,0 +1,8 @@
+function spinalCase(str) {
+
+  var newstr = str.replace(/[\W_\s]/gi, " ").replace(/(\B[A-Z])/g," $1").toLowerCase().split(" ");
+  
+  return newstr.join("-");
+}
+
+spinalCase('This Is Spinal Tap');
