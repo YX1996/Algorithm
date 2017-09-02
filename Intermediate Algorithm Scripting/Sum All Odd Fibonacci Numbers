@@ -1,0 +1,17 @@
+function sumFibs(num) {
+  var arr = [1,1];
+  for(let i=0; i<30; i++){
+    arr.push(arr[i]+arr[i+1]);
+  }
+  var newArr = arr.filter(function(item, index, arr){
+     if(item <= num && item%2 !==0){
+       return true;
+     }
+  });
+  var sum = newArr.reduce(function(pre, cur, index, arr){
+    return pre + cur;
+  });
+  return sum;
+}
+
+sumFibs(4);
