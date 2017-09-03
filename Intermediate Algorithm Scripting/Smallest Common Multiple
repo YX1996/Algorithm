@@ -1,0 +1,21 @@
+function smallestCommons(arr) {
+    var newArr = [];
+    var min = Math.min.apply(null,arr);
+    var max = Math.max.apply(null,arr);
+    for(let i = min; i<=max; i++) {
+        newArr.push(i);
+    }
+    function gcd(a, b){ //欧几里德算法（辗转相除法）求两个数的最大公约数
+        if(a%b === 0){
+          return b;
+        }else{
+          return gcd(b, a%b);
+        }
+    }
+    return newArr.reduce(function(pre, cur){
+        return pre*cur/gcd(pre,cur);
+    });
+}
+smallestCommons([1,5]);
+
+
