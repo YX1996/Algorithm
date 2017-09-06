@@ -1,0 +1,38 @@
+ function sym(args) {
+   var arr = [];
+   
+   //为每个参数数组去重
+   var len = arguments.length;
+   
+   //封装数组去重函数
+   Array.prototype.unique = function(){
+     var arr = [];
+     var json = {};
+     for(var i = 0; i < this.length; i++){
+       if(!json[this[i]]){
+         arr.push(this[i]);
+         json[this[i]] = 1;
+       }
+     }
+     return arr;
+   };
+   
+   for(let i=0; i<len; i++) {
+     arr.push(arguments[i].unique());
+   }
+  
+   return arr.reduce(function(pre, cur){
+     var newArr = [];
+     var myArr = pre.concat(cur);
+     // 相邻数组连接后，找出对等差分集合，传给新数组
+     for(let i=0; i<myArr.length; i++) {
+       if(myArr.indexOf(myArr[i]) == myArr.lastIndexOf(myArr[i])) {
+         newArr.push(myArr[i]);
+       }
+     }
+     //返回对等差分集合进行迭代
+     return newArr;
+   });
+}
+
+sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]);
