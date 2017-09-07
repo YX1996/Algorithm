@@ -1,0 +1,53 @@
+function checkCashRegister(price, cash, cid) {
+    var change;
+    change = cash - price;//找的钱
+    var arr = [];
+    var j=0;
+    var array = [0.01,0.05,0.1,0.25,1,5,10,20,100];//对应cid[i][0]
+    var total = 0;var money = change;                    
+
+    for(var i=cid.length-1;i>=0;i--){
+        total += cid[i][1];//总钱数
+        //cid[i][0]:PENNY单位,cid[i][1]:1.01总数
+        if(change > array[i] && cid[i][1]>0){//
+            var c = parseInt(change/array[i]);//可以找多少张这个钱
+
+ //如果change中可以找的这个钱的金额，比实际这个金额的钱大,说明可以将现有的钱找完，cid[i]应该放到数组中
+ //如果小，则将change可以找的金额放进去
+            if(c*array[i] > cid[i][1]){
+                change -= cid[i][1];
+            }else{
+                change -= c*array[i];
+                cid[i][1] = c*array[i];
+            }
+            change = change.toFixed(2);//四舍五入，保留两位小数
+
+            //arr.push(cid[i]);
+            arr[j] = cid[i];
+            j++;
+        }
+
+    }
+
+    if(total == money){//总钱数等于要找的钱，closed
+        return "Closed";
+    }else if(total < money || change != 0){//总钱数小于要找的钱，或者不能找整
+        return "Insufficient Funds";
+    }
+
+    return arr;
+
+}
+
+// Example cash-in-drawer array:
+// [["PENNY", 1.01],
+// ["NICKEL", 2.05],
+// ["DIME", 3.10],
+// ["QUARTER", 4.25],
+// ["ONE", 90.00],
+// ["FIVE", 55.00],
+// ["TEN", 20.00],
+// ["TWENTY", 60.00],
+// ["ONE HUNDRED", 100.00]]
+
+checkCashRegister(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
